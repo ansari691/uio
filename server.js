@@ -2,7 +2,7 @@ const express = require("express");
 const connectDb = require("./db");
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -30,5 +30,6 @@ app.use("/api/about", require("./routes/api/about"));
 app.use("/api/contact", require("./routes/api/contact"));
 app.use("/api/privacy", require("./routes/api/privacy"));
 app.use("/api/terms", require("./routes/api/terms"));
+app.use("/api/homeBanner", require("./routes/api/homeBannerSlider"));
 
 connectDb;
