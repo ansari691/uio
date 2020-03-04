@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const InternetServiceSchema = new mongoose.Schema({
 
-    internetService : { type : String, required: true},
+    internetServiceIcon : { type : String, required: true},
     internetServiceTitle : { type : String, required : true},
     internetServiceDescription : { type : String, required : true}
 

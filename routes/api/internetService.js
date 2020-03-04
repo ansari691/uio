@@ -8,9 +8,9 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     try {
       const newInternetService = new InternetService({
-        internetService: req.body.InternetService,
-        internetServiceTitle: req.body.InternetServiceTitle,
-        internetServiceDescription: req.body.InternetServiceDescription
+        internetServiceIcon : req.body.internetServiceIcon,
+        internetServiceTitle: req.body.internetServiceTitle,
+        internetServiceDescription: req.body.internetServiceDescription
       });
   
       const result = await newInternetService.save();
@@ -38,14 +38,14 @@ router.post("/", async (req, res) => {
       const service = await InternetService.findById(req.params.id);
   
       const {
-        InternetService,
-        InternetServiceTitle,
-        InternetServiceDescription
+        internetServiceIcon,
+        internetServiceTitle,
+        internetServiceDescription
       } = req.body;
   
-      service.InternetService = InternetService;
-      service.InternetServiceTitle = InternetServiceTitle;
-      service.InternetServiceDescription = InternetServiceDescription;
+      service.internetServiceIcon = internetServiceIcon;
+      service.internetServiceTitle = internetServiceTitle;
+      service.internetServiceDescription = internetServiceDescription;
   
       const updated = await service.save();
       res.json(updated);

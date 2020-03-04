@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     const newSoftwareService = new SoftwareService({
-      softwareService: req.body.softwareService,
+      softwareServiceIcon: req.body.softwareServiceIcon,
       softwareServiceTitle: req.body.softwareServiceTitle,
       softwareServiceDescription: req.body.softwareServiceDescription
     });
@@ -37,12 +37,12 @@ router.put("/:id", async (req, res) => {
     const service = await SoftwareService.findById(req.params.id);
 
     const {
-      softwareService,
+      softwareServiceIcon,
       softwareServiceTitle,
       softwareServiceDescription
     } = req.body;
 
-    service.softwareService = softwareService;
+    service.softwareServiceIcon = softwareServiceIcon;
     service.softwareServiceTitle = softwareServiceTitle;
     service.softwareServiceDescription = softwareServiceDescription;
 
