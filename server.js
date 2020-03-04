@@ -1,12 +1,11 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const connectDb = require('./db');
 
 
 const app = express();
 const PORT = 5001;
 
-
+app.use(express.json());
 app.listen(PORT, console.log(`server is runnig at port ${PORT}`));
 
 app.get("/", (req,res,next) => {
@@ -14,7 +13,16 @@ app.get("/", (req,res,next) => {
     next();
 });
 
-app.use(express.json());
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Request-With, Accept, Content-Type, Authorization, x-auth-token');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  
+    next();
+  })
+
+
 app.use('/api/internetServices', require('./routes/api/internetService'));
 app.use('/api/softwareServices', require('./routes/api/softwareService'));
 app.use('/api/careers', require('./routes/api/careers'));
